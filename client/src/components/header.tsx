@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, Users, Building2, GraduationCap, Hospital } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,17 @@ import {
 export default function Header() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigation = [
     { name: "Our Producers", href: "#producers" },
@@ -48,8 +59,12 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-teal-500 text-white relative">
-      <nav className="container mx-auto px-6 py-4">
+    <header className={`bg-teal-500 text-white fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'shadow-lg' : ''
+    }`}>
+      <nav className={`container mx-auto px-6 transition-all duration-300 ${
+        isScrolled ? 'py-2' : 'py-4'
+      }`}>
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
@@ -63,7 +78,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
+            {!isScrolled && navigation.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -126,7 +141,7 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-2">
-              {navigation.map((item) => (
+              {!isScrolled && navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
@@ -136,7 +151,7 @@ export default function Header() {
                   {item.name}
                 </a>
               ))}
-              <div className="border-t border-teal-400 pt-2 mt-2">
+              <div className={`${!isScrolled ? 'border-t border-teal-400 pt-2 mt-2' : ''}`}>
                 <div className="bg-white text-teal-600 rounded-md p-2 mb-2 shadow-md">
                   <div className="text-sm font-semibold mb-2">Request a Screening:</div>
                   {screeningTypes.map((type) => (

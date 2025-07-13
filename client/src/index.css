@@ -75,6 +75,7 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    padding-top: 80px; /* Account for fixed header */
   }
 }
 
