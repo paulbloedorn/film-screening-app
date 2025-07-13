@@ -89,6 +89,8 @@ Changelog:
   - Added new hero section with "We all take childbirth for granted..." tagline
   - Integrated movie poster image on right side
   - Added "Watch Trailer" CTA button with full-screen YouTube embed modal
+  - Enhanced trailer modal with semi-transparent background and prominent "Return to Site" button
+  - Added "24 Days Without You" branding overlay in trailer modal
   - Moved audience cards section below hero
 - July 13, 2025. Implemented homepage blueprint design:
   - Added three audience-focused cards (Conference, Hospital, Education)
