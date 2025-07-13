@@ -13,16 +13,25 @@ export default function Header() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 100);
+      const scrollingUp = scrollTop < lastScrollY;
+      
+      if (scrollTop > 100 && !scrollingUp) {
+        setIsScrolled(true);
+      } else if (scrollingUp || scrollTop <= 100) {
+        setIsScrolled(false);
+      }
+      
+      setLastScrollY(scrollTop);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navigation = [
     { name: "Our Producers", href: "#producers" },
