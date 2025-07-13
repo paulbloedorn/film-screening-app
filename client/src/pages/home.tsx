@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </section>
       {/* Testimonials Carousel */}
-      <section className="py-16 bg-cream-100 text-[#ffffff]">
+      <section className="py-16 text-[#ffffff] bg-[#4b969b]">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-display font-bold text-center mb-12">What People Are Saying</h2>
           <div className="grid md:grid-cols-3 gap-8">
