@@ -94,6 +94,8 @@ Changelog:
   - Made trailer modal fully responsive for mobile and narrow browser windows
   - Moved testimonials section directly below hero section
   - Moved audience cards section below testimonials
+  - Added "Screenings and Speaking Engagements" CTA section after hero
+  - Enhanced "Request a Screening" button with contrasting white background
 - July 13, 2025. Implemented homepage blueprint design:
   - Added three audience-focused cards (Conference, Hospital, Education)
   - Implemented "Schedule a Consult" CTA throughout

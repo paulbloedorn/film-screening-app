@@ -78,8 +78,7 @@ export default function Header() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  variant="ghost"
-                  className="flex items-center space-x-1 hover:text-teal-200 transition-colors duration-200 text-white hover:bg-teal-600"
+                  className="flex items-center space-x-1 bg-white text-teal-600 hover:bg-cream-100 hover:text-teal-700 transition-colors duration-200 border-0 shadow-md font-semibold"
                 >
                   <span>Request a Screening</span>
                   <ChevronDown className="h-4 w-4" />
@@ -139,17 +138,19 @@ export default function Header() {
                 </a>
               ))}
               <div className="border-t border-teal-400 pt-2 mt-2">
-                <div className="text-sm font-medium mb-2">Request a Screening:</div>
-                {screeningTypes.map((type) => (
-                  <Link
-                    key={type.name}
-                    href={type.href}
-                    className="block py-2 pl-4 hover:text-teal-200 transition-colors duration-200"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {type.name}
-                  </Link>
-                ))}
+                <div className="bg-white text-teal-600 rounded-md p-2 mb-2 shadow-md">
+                  <div className="text-sm font-semibold mb-2">Request a Screening:</div>
+                  {screeningTypes.map((type) => (
+                    <Link
+                      key={type.name}
+                      href={type.href}
+                      className="block py-2 pl-2 hover:text-teal-700 hover:bg-cream-100 rounded transition-colors duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {type.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
