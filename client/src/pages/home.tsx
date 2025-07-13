@@ -47,6 +47,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Carousel */}
+      <section className="py-16 bg-cream-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-display font-bold text-center mb-12">What People Are Saying</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            
+            {/* Conference Testimonial */}
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <Calendar className="h-6 w-6 text-teal-600 mr-2" />
+                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">Conference</Badge>
+                </div>
+                <blockquote className="text-lg italic text-gray-700 mb-4">
+                  "Raw, powerful, and deeply moving. This film doesn't just tell a story—it invites you to feel every moment and leaves you thinking long after the credits roll."
+                </blockquote>
+                <footer className="text-sm font-medium text-gray-600">
+                  — Denise Amundson, RN Labor and Delivery
+                </footer>
+              </CardContent>
+            </Card>
+
+            {/* Hospital Testimonial */}
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <Stethoscope className="h-6 w-6 text-teal-600 mr-2" />
+                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">Hospital</Badge>
+                </div>
+                <blockquote className="text-lg italic text-gray-700 mb-4">
+                  "I'm a better nurse for having the opportunity to see their story. This film should be essential viewing for all healthcare professionals."
+                </blockquote>
+                <footer className="text-sm font-medium text-gray-600">
+                  — Julie O'Hara, RN, Neonatology
+                </footer>
+              </CardContent>
+            </Card>
+
+            {/* Education Testimonial */}
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <GraduationCap className="h-6 w-6 text-teal-600 mr-2" />
+                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">Education</Badge>
+                </div>
+                <blockquote className="text-lg italic text-gray-700 mb-4">
+                  "This film should be essential viewing for all healthcare professionals who are involved in obstetric care."
+                </blockquote>
+                <footer className="text-sm font-medium text-gray-600">
+                  — Catherine Hermann, MD
+                </footer>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Audience Cards Section */}
       <section className="bg-teal-500 text-white py-20 relative overflow-hidden">
         <div className="container mx-auto px-6">
@@ -182,63 +239,6 @@ export default function Home() {
                 <div className="text-sm text-gray-600">said session will change practice</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Carousel */}
-      <section className="py-16 bg-cream-100">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-display font-bold text-center mb-12">What People Are Saying</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            
-            {/* Conference Testimonial */}
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-center mb-4">
-                  <Calendar className="h-6 w-6 text-teal-600 mr-2" />
-                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">Conference</Badge>
-                </div>
-                <blockquote className="text-lg italic text-gray-700 mb-4">
-                  "Raw, powerful, and deeply moving. This film doesn't just tell a story—it invites you to feel every moment and leaves you thinking long after the credits roll."
-                </blockquote>
-                <footer className="text-sm font-medium text-gray-600">
-                  — Denise Amundson, RN Labor and Delivery
-                </footer>
-              </CardContent>
-            </Card>
-
-            {/* Hospital Testimonial */}
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-center mb-4">
-                  <Stethoscope className="h-6 w-6 text-teal-600 mr-2" />
-                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">Hospital</Badge>
-                </div>
-                <blockquote className="text-lg italic text-gray-700 mb-4">
-                  "I'm a better nurse for having the opportunity to see their story. This film should be essential viewing for all healthcare professionals."
-                </blockquote>
-                <footer className="text-sm font-medium text-gray-600">
-                  — Julie O'Hara, RN, Neonatology
-                </footer>
-              </CardContent>
-            </Card>
-
-            {/* Education Testimonial */}
-            <Card>
-              <CardContent className="pt-6">
-                <div className="flex items-center mb-4">
-                  <GraduationCap className="h-6 w-6 text-teal-600 mr-2" />
-                  <Badge variant="secondary" className="bg-teal-100 text-teal-800">Education</Badge>
-                </div>
-                <blockquote className="text-lg italic text-gray-700 mb-4">
-                  "This film should be essential viewing for all healthcare professionals who are involved in obstetric care."
-                </blockquote>
-                <footer className="text-sm font-medium text-gray-600">
-                  — Catherine Hermann, MD
-                </footer>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>

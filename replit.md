@@ -92,7 +92,8 @@ Changelog:
   - Enhanced trailer modal with semi-transparent background and prominent "Return to Site" button
   - Added "24 Days Without You" branding overlay in trailer modal
   - Made trailer modal fully responsive for mobile and narrow browser windows
-  - Moved audience cards section below hero
+  - Moved testimonials section directly below hero section
+  - Moved audience cards section below testimonials
 - July 13, 2025. Implemented homepage blueprint design:
   - Added three audience-focused cards (Conference, Hospital, Education)
   - Implemented "Schedule a Consult" CTA throughout
