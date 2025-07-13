@@ -13,6 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
+
       {/* Hero Section with Movie Poster */}
       <section className="py-20 bg-cream-100 relative overflow-hidden">
         <div className="container mx-auto px-6">
@@ -45,8 +46,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Testimonials Carousel */}
-      <section className="py-16 bg-cream-100 text-[#ffffff]">
+      <section className="py-16 bg-cream-100">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-display font-bold text-center mb-12">What People Are Saying</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -101,6 +103,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Audience Cards Section */}
       <section className="bg-teal-500 text-white py-20 relative overflow-hidden">
         <div className="container mx-auto px-6">
@@ -217,6 +220,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* Impact Metrics Bar */}
       <section className="py-12 bg-white border-b border-gray-200">
         <div className="container mx-auto px-6">
@@ -238,6 +242,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* How It Works */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
@@ -261,8 +266,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       {/* FAQ Section */}
       <FAQ />
+
       {/* CTA Section */}
       <section className="bg-teal-500 text-white py-16">
         <div className="container mx-auto px-6 text-center">
@@ -277,6 +284,7 @@ export default function Home() {
           </ConsultationModal>
         </div>
       </section>
+
       <Footer />
     </div>
   );
