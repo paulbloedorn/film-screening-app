@@ -1,4 +1,4 @@
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 import { useState } from "react";
 import { Menu, X, ChevronDown, Users, Building2, GraduationCap, Hospital } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,16 +10,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function Header() {
-  const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navigation = [
-    { name: "Our Producers", href: "#producers" },
-    { name: "Behind the Scenes", href: "#behind-scenes" },
-    { name: "AFE Foundation", href: "#foundation" },
-    { name: "Press & Events", href: "#press" },
-    { name: "Contact Us", href: "#contact" },
-  ];
+
 
   const screeningTypes = [
     {
@@ -64,16 +57,6 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="hover:text-teal-200 transition-colors duration-200"
-              >
-                {item.name}
-              </a>
-            ))}
-
             {/* Screening Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -127,30 +110,18 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-2">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="py-2 hover:text-teal-200 transition-colors duration-200"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <div className="border-t border-teal-400 pt-2 mt-2">
-                <div className="bg-white text-teal-600 rounded-md p-2 mb-2 shadow-md">
-                  <div className="text-sm font-semibold mb-2">Request a Screening:</div>
-                  {screeningTypes.map((type) => (
-                    <Link
-                      key={type.name}
-                      href={type.href}
-                      className="block py-2 pl-2 hover:text-teal-700 hover:bg-cream-100 rounded transition-colors duration-200"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {type.name}
-                    </Link>
-                  ))}
-                </div>
+              <div className="bg-white text-teal-600 rounded-md p-2 mb-2 shadow-md">
+                <div className="text-sm font-semibold mb-2">Request a Screening:</div>
+                {screeningTypes.map((type) => (
+                  <Link
+                    key={type.name}
+                    href={type.href}
+                    className="block py-2 pl-2 hover:text-teal-700 hover:bg-cream-100 rounded transition-colors duration-200"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {type.name}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
