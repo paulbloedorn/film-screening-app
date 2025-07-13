@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import FAQ from "@/components/faq";
 import ConsultationModal from "@/components/consultation-modal";
+import TrailerModal from "@/components/trailer-modal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -25,10 +26,12 @@ export default function Home() {
                 On March 22, 2020, Annie and Tony checked into the hospital for what should have been a routine delivery of their baby boy. What followed was 24 days that would change their lives forever.
               </p>
               <div className="pt-4">
-                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 text-lg font-semibold inline-flex items-center space-x-2 shadow-lg">
-                  <Play className="h-6 w-6" />
-                  <span>Watch Trailer</span>
-                </Button>
+                <TrailerModal>
+                  <Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 text-lg font-semibold inline-flex items-center space-x-2 shadow-lg">
+                    <Play className="h-6 w-6" />
+                    <span>Watch Trailer</span>
+                  </Button>
+                </TrailerModal>
               </div>
             </div>
             <div className="relative">
