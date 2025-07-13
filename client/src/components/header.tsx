@@ -16,7 +16,6 @@ export default function Header() {
   const navigation = [
     { name: "Our Producers", href: "#producers" },
     { name: "Behind the Scenes", href: "#behind-scenes" },
-    { name: "AFE Foundation", href: "#foundation" },
     { name: "Press & Events", href: "#press" },
     { name: "Contact Us", href: "#contact" },
   ];
