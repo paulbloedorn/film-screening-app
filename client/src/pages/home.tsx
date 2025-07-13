@@ -47,6 +47,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Screenings and Speaking Engagements CTA */}
+      <section className="bg-teal-500 text-white py-16">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="text-4xl font-display font-bold mb-6">Screenings and Speaking Engagements</h2>
+          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+            As a case study supporting both AFE and mental-trauma awareness, screening and discussing 24 Days can help foster a culture where trauma-informed care is not just a policy, but a lived practice.
+          </p>
+          <ConsultationModal>
+            <Button className="bg-white text-teal-700 px-12 py-4 hover:bg-cream-100 transition-colors duration-200 text-lg font-semibold">
+              Schedule a Consult
+            </Button>
+          </ConsultationModal>
+        </div>
+      </section>
+
       {/* Testimonials Carousel */}
       <section className="py-16 bg-cream-100">
         <div className="container mx-auto px-6">
