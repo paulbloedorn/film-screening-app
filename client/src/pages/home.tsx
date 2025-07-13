@@ -6,19 +6,51 @@ import ConsultationModal from "@/components/consultation-modal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import posterImage from "@assets/poster_24_days_1752421477308.png";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
 
-      {/* Hero Section with Audience Cards */}
+      {/* Hero Section with Movie Poster */}
+      <section className="py-20 bg-cream-100 relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <h1 className="text-4xl lg:text-5xl font-display font-bold leading-tight text-gray-800">
+                We all take childbirth for granted...
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                On March 22, 2020, Annie and Tony checked into the hospital for what should have been a routine delivery of their baby boy. What followed was 24 days that would change their lives forever.
+              </p>
+              <div className="pt-4">
+                <Button className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 text-lg font-semibold inline-flex items-center space-x-2 shadow-lg">
+                  <Play className="h-6 w-6" />
+                  <span>Watch Trailer</span>
+                </Button>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="max-w-lg mx-auto">
+                <img 
+                  src={posterImage} 
+                  alt="24 Days Without You movie poster featuring Annie and her baby" 
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Audience Cards Section */}
       <section className="bg-teal-500 text-white py-20 relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h1 className="text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+            <h2 className="text-4xl lg:text-5xl font-display font-bold leading-tight mb-6">
               Award-winning maternal-health documentary with turnkey education packages
-            </h1>
+            </h2>
             <p className="text-xl lg:text-2xl opacity-90 max-w-4xl mx-auto">
               Inspire trauma-informed care and improve birth experiences across your organisation
             </p>

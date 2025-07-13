@@ -85,6 +85,11 @@ The application follows a modern full-stack architecture with:
 
 ```
 Changelog:
+- July 13, 2025. Added hero section with movie poster:
+  - Added new hero section with "We all take childbirth for granted..." tagline
+  - Integrated movie poster image on right side
+  - Added "Watch Trailer" CTA button
+  - Moved audience cards section below hero
 - July 13, 2025. Implemented homepage blueprint design:
   - Added three audience-focused cards (Conference, Hospital, Education)
   - Implemented "Schedule a Consult" CTA throughout
