@@ -135,6 +135,14 @@ function buildServerApplication() {
   
   // Compile TypeScript server code
   runCommand('npx tsc --project tsconfig.server.json', 'Compiling server TypeScript');
+
+  // Post-build: Move the entry file to the expected location
+  const srcEntry = 'dist/server/server/index.js';
+  const destEntry = 'dist/server/index.js';
+  if (existsSync(srcEntry)) {
+    cpSync(srcEntry, destEntry);
+    console.log(`✅ Copied ${srcEntry} to ${destEntry}`);
+  }
   
   // Verify server build output
   const requiredServerFiles = [

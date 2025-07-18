@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { createStorage } from "./storage";
-import { insertScreeningRequestSchema } from "@shared/schema";
+import { insertScreeningRequestSchema } from "./shared/schema";
 import { addCorsHeaders } from "./middleware";
 import type { Env } from "./index";
 

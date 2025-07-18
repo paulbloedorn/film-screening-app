@@ -1,7 +1,7 @@
 import { drizzle } from "drizzle-orm/neon-http";
 import { neon } from "@neondatabase/serverless";
 import { eq } from "drizzle-orm";
-import { screeningRequests, type ScreeningRequest, type InsertScreeningRequest } from "@shared/schema";
+import { screeningRequests, type ScreeningRequest, type InsertScreeningRequest } from "./shared/schema";
 
 export interface IStorage {
   getScreeningRequest(id: number): Promise<ScreeningRequest | undefined>;

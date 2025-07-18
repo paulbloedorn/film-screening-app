@@ -4,6 +4,7 @@
   "compilerOptions": {
     "noEmit": false,
     "outDir": "./dist/server",
+    "rootDir": "./server",
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",

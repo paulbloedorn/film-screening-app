@@ -17,7 +17,9 @@ NODE_ENV = "production"
 # Build configuration for production deployment
 [build]
 command = "npm run build:production"
-watch_dir = ["server", "client/src", "tina", "content", "shared"]
+# NOTE: Only watch specific Tina config files to avoid infinite build loops caused by generated files.
+# TODO: Implement a more robust watcher or ignore pattern for tina/__generated__ in the future.
+watch_dir = ["server", "client/src", "tina/config.ts", "tina/queries.ts", "content", "shared"]
 
 # Observability configuration
 [observability]
