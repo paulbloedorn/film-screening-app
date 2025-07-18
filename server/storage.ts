@@ -1,3 +1,6 @@
+import { drizzle } from "drizzle-orm/neon-http";
+import { neon } from "@neondatabase/serverless";
+import { eq } from "drizzle-orm";
 import { screeningRequests, type ScreeningRequest, type InsertScreeningRequest } from "@shared/schema";
 
 export interface IStorage {
@@ -6,33 +9,42 @@ export interface IStorage {
   createScreeningRequest(request: InsertScreeningRequest): Promise<ScreeningRequest>;
 }
 
-export class MemStorage implements IStorage {
-  private screeningRequests: Map<number, ScreeningRequest>;
-  private currentId: number;
+export class NeonStorage implements IStorage {
+  private db: ReturnType<typeof drizzle>;
 
-  constructor() {
-    this.screeningRequests = new Map();
-    this.currentId = 1;
+  constructor(databaseUrl: string) {
+    const sql = neon(databaseUrl);
+    this.db = drizzle(sql);
   }
 
   async getScreeningRequest(id: number): Promise<ScreeningRequest | undefined> {
-    return this.screeningRequests.get(id);
+    const result = await this.db
+      .select()
+      .from(screeningRequests)
+      .where(eq(screeningRequests.id, id))
+      .limit(1);
+    
+    return result[0];
   }
 
   async getAllScreeningRequests(): Promise<ScreeningRequest[]> {
-    return Array.from(this.screeningRequests.values());
+    return await this.db
+      .select()
+      .from(screeningRequests)
+      .orderBy(screeningRequests.createdAt);
   }
 
   async createScreeningRequest(insertRequest: InsertScreeningRequest): Promise<ScreeningRequest> {
-    const id = this.currentId++;
-    const request: ScreeningRequest = {
-      ...insertRequest,
-      id,
-      createdAt: new Date(),
-    };
-    this.screeningRequests.set(id, request);
-    return request;
+    const result = await this.db
+      .insert(screeningRequests)
+      .values(insertRequest)
+      .returning();
+    
+    return result[0];
   }
 }
 
-export const storage = new MemStorage();
+// Factory function to create storage instance
+export function createStorage(databaseUrl: string): IStorage {
+  return new NeonStorage(databaseUrl);
+}

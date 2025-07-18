@@ -1,51 +1,89 @@
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { getFaqContent } from "@tina/queries";
+
+// Helper function to render rich text content
+const renderRichText = (content: any) => {
+  if (!content || !content.children) return "";
+  
+  return content.children.map((child: any, index: number) => {
+    if (child.type === "p" && child.children) {
+      return child.children.map((textNode: any) => textNode.text || "").join("");
+    }
+    return "";
+  }).join("");
+};
 
 export default function FAQ() {
-  const faqs = [
-    {
-      question: "What licensing options are available?",
-      answer: "We offer flexible licensing options including single-use screenings, multi-event packages, and institutional licenses. All options include streaming access via Vimeo and basic educational materials."
-    },
-    {
-      question: "What are the pricing tiers?",
-      answer: "Pricing varies based on audience size, event type, and licensing duration. Conference screenings start at $500, hospital/clinic screenings at $300, and educational institutional licenses at $200. Contact us for a customized quote."
-    },
-    {
-      question: "What technical requirements do I need?",
-      answer: "You'll need a stable internet connection for Vimeo streaming, a projector or large screen, and basic audio equipment. We provide detailed A/V specifications and tech setup guides with every booking."
-    },
-    {
-      question: "How long is the film and discussion time?",
-      answer: "The documentary is 56 minutes long. We recommend allowing 90 minutes total for screening plus discussion. We provide facilitation guides and suggested discussion questions."
-    },
-    {
-      question: "Do you provide continuing education credits?",
-      answer: "Yes, we can help coordinate CME, CNE, and other continuing education credits. Our educational packages include competency assessments and accreditation support materials."
-    },
-    {
-      question: "Can I customize the content for my specific audience?",
-      answer: "Absolutely! We provide customizable discussion guides, reflection worksheets, and presentation materials that can be adapted for different healthcare settings and specialties."
-    }
-  ];
+  const [faqContent, setFaqContent] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchFaqContent = async () => {
+      try {
+        const data = await getFaqContent();
+        setFaqContent(data);
+      } catch (error) {
+        console.error("Failed to load FAQ content:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFaqContent();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <div className="animate-pulse">
+              <div className="h-8 bg-gray-300 rounded w-64 mx-auto mb-12"></div>
+              <div className="max-w-3xl mx-auto space-y-4">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="h-16 bg-gray-200 rounded"></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!faqContent) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center">
+            <p className="text-red-600">Failed to load FAQ content. Please try again later.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-display font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <h2 className="text-4xl font-display font-bold text-center mb-12">
+          {faqContent.headline || "Frequently Asked Questions"}
+        </h2>
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible>
-            {faqs.map((faq, index) => (
+            {faqContent.items?.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
                 <AccordionTrigger className="text-left text-lg font-medium">
-                  {faq.question}
+                  {faq?.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-700 leading-relaxed">
-                  {faq.answer}
+                  {renderRichText(faq?.answer)}
                 </AccordionContent>
               </AccordionItem>
             ))}

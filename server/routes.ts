@@ -1,60 +1,99 @@
-import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { z } from "zod";
-import { storage } from "./storage";
+import { createStorage } from "./storage";
 import { insertScreeningRequestSchema } from "@shared/schema";
+import { addCorsHeaders } from "./middleware";
+import type { Env } from "./index";
 
-export async function registerRoutes(app: Express): Promise<Server> {
-  // Get all screening requests
-  app.get("/api/screening-requests", async (req, res) => {
-    try {
+export async function handleApiRequest(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const { pathname } = url;
+  const method = request.method;
+
+  // Create storage instance with database URL from environment
+  const storage = createStorage(env.DATABASE_URL);
+
+  // Handle preflight requests
+  if (method === 'OPTIONS') {
+    return addCorsHeaders(new Response(null, { status: 200 }));
+  }
+
+  try {
+    // Route: GET /api/screening-requests
+    if (pathname === '/api/screening-requests' && method === 'GET') {
       const requests = await storage.getAllScreeningRequests();
-      res.json(requests);
-    } catch (error) {
-      console.error("Error fetching screening requests:", error);
-      res.status(500).json({ message: "Failed to fetch screening requests" });
+      const response = new Response(JSON.stringify(requests), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      return addCorsHeaders(response);
     }
-  });
 
-  // Create new screening request
-  app.post("/api/screening-requests", async (req, res) => {
-    try {
-      const validatedData = insertScreeningRequestSchema.parse(req.body);
-      const newRequest = await storage.createScreeningRequest(validatedData);
-      res.status(201).json(newRequest);
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        res.status(400).json({ 
-          message: "Invalid request data", 
-          errors: error.errors 
+    // Route: POST /api/screening-requests
+    if (pathname === '/api/screening-requests' && method === 'POST') {
+      try {
+        const body = await request.json();
+        const validatedData = insertScreeningRequestSchema.parse(body);
+        const newRequest = await storage.createScreeningRequest(validatedData);
+        
+        const response = new Response(JSON.stringify(newRequest), {
+          status: 201,
+          headers: { 'Content-Type': 'application/json' },
         });
-      } else {
-        console.error("Error creating screening request:", error);
-        res.status(500).json({ message: "Failed to create screening request" });
+        return addCorsHeaders(response);
+      } catch (error) {
+        if (error instanceof z.ZodError) {
+          const response = new Response(JSON.stringify({ 
+            message: "Invalid request data", 
+            errors: error.errors 
+          }), {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+          });
+          return addCorsHeaders(response);
+        }
+        throw error;
       }
     }
-  });
 
-  // Get specific screening request
-  app.get("/api/screening-requests/:id", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
+    // Route: GET /api/screening-requests/:id
+    const screeningRequestMatch = pathname.match(/^\/api\/screening-requests\/(\d+)$/);
+    if (screeningRequestMatch && method === 'GET') {
+      const id = parseInt(screeningRequestMatch[1]);
       if (isNaN(id)) {
-        return res.status(400).json({ message: "Invalid ID" });
+        const response = new Response(JSON.stringify({ message: "Invalid ID" }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        });
+        return addCorsHeaders(response);
       }
 
-      const request = await storage.getScreeningRequest(id);
-      if (!request) {
-        return res.status(404).json({ message: "Screening request not found" });
+      const screeningRequest = await storage.getScreeningRequest(id);
+      if (!screeningRequest) {
+        const response = new Response(JSON.stringify({ message: "Screening request not found" }), {
+          status: 404,
+          headers: { 'Content-Type': 'application/json' },
+        });
+        return addCorsHeaders(response);
       }
 
-      res.json(request);
-    } catch (error) {
-      console.error("Error fetching screening request:", error);
-      res.status(500).json({ message: "Failed to fetch screening request" });
+      const response = new Response(JSON.stringify(screeningRequest), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      return addCorsHeaders(response);
     }
-  });
 
-  const httpServer = createServer(app);
-  return httpServer;
+    // Route not found
+    const response = new Response(JSON.stringify({ message: "API route not found" }), {
+      status: 404,
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return addCorsHeaders(response);
+
+  } catch (error) {
+    console.error("API Error:", error);
+    const response = new Response(JSON.stringify({ message: "Internal Server Error" }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return addCorsHeaders(response);
+  }
 }

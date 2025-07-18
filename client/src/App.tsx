@@ -9,6 +9,7 @@ import Hospital from "@/pages/hospital";
 import Education from "@/pages/education";
 import Corporate from "@/pages/corporate";
 import NotFound from "@/pages/not-found";
+import AdminRoute from "@/components/admin-route";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/hospital" component={Hospital} />
       <Route path="/education" component={Education} />
       <Route path="/corporate" component={Corporate} />
+      <Route path="/admin" component={AdminRoute} />
       <Route component={NotFound} />
     </Switch>
   );

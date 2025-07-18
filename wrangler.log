@@ -1,0 +1,194 @@
+
+ ⛅️ wrangler 4.25.0
+───────────────────
+[custom build] Running: npm run build
+[custom build] 
+[custom build] > film-screening-workers@1.0.0 build
+[custom build] > node scripts/setup-tinacms.js build && vite build --outDir ../dist/client && tsc --project tsconfig.server.json
+[custom build] 
+[custom build] 
+[custom build] 🔍 Checking TinaCMS setup...
+[custom build] 
+[custom build] ✅ TinaCMS config file: Found
+[custom build] ✅ Content directory: Found
+[custom build] ✅ Admin directory: Found
+[custom build] ✅ Homepage content: Found
+[custom build] ✅ FAQ content: Found
+[custom build] 
+[custom build] 🔍 Checking environment variables...
+[custom build] ⚠️  NEXT_PUBLIC_TINA_CLIENT_ID: Not set (required for production)
+[custom build] ⚠️  TINA_TOKEN: Not set (required for production)
+[custom build] 
+[custom build] 
+[custom build] ✅ TinaCMS setup looks good!
+[custom build] 🔨 Building TinaCMS...
+[custom build] 🏠 Building for local development...
+[custom build] ℹ️  TinaCMS Cloud credentials not found. Using local file-based content management.
+[custom build] 
+[custom build] ✅ Local admin interface created
+[custom build] ✅ TinaCMS build completed
+[custom build] 
+[custom build] vite v5.4.19 building for production...
+[custom build] 
+[custom build] transforming...
+[custom build] 
+[custom build] ✓ 1849 modules transformed.
+[custom build] 
+[custom build] rendering chunks...
+[custom build] 
+[custom build] computing gzip size...
+[custom build] 
+[custom build] ../dist/client/index.html                   0.63 kB │ gzip:   0.38 kB
+[custom build] 
+[custom build] ../dist/client/assets/index-B3TxwXv2.css   65.62 kB │ gzip:  11.63 kB
+[custom build] ../dist/client/assets/index-nna_wfsa.js   516.14 kB │ gzip: 154.05 kB
+[custom build] 
+[custom build] 
+[custom build] (!) Some chunks are larger than 500 kB after minification. Consider:
+[custom build] - Using dynamic import() to code-split the application
+[custom build] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[custom build] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[custom build] 
+[custom build] ✓ built in 1.57s
+[custom build] 
+Your Worker has access to the following bindings:
+Binding                                                            Resource                  Mode
+env.ASSETS                                                         Assets                    local
+env.NODE_ENV ("development")                                       Environment Variable      local
+env.DATABASE_URL ("postgresql://neondb_owner:npg_V89iAUB...")      Environment Variable      local
+
+The file server,client/src,tina,content changed, restarting build...
+[custom build] Running: npm run build
+[custom build] 
+[custom build] > film-screening-workers@1.0.0 build
+[custom build] > node scripts/setup-tinacms.js build && vite build --outDir ../dist/client && tsc --project tsconfig.server.json
+[custom build] 
+[custom build] 
+[wrangler:info] Ready on http://localhost:8787
+[custom build] 🔍 Checking TinaCMS setup...
+[custom build] ✅ TinaCMS config file: Found
+[custom build] ✅ Content directory: Found
+[custom build] ✅ Admin directory: Found
+[custom build] ✅ Homepage content: Found
+[custom build] ✅ FAQ content: Found
+[custom build] 
+[custom build] 🔍 Checking environment variables...
+[custom build] ⚠️  NEXT_PUBLIC_TINA_CLIENT_ID: Not set (required for production)
+[custom build] ⚠️  TINA_TOKEN: Not set (required for production)
+[custom build] 
+[custom build] 
+[custom build] ✅ TinaCMS setup looks good!
+[custom build] 🔨 Building TinaCMS...
+[custom build] 🏠 Building for local development...
+[custom build] ℹ️  TinaCMS Cloud credentials not found. Using local file-based content management.
+[custom build] 
+[custom build] ✅ Local admin interface created
+[custom build] 
+[custom build] ✅ TinaCMS build completed
+[custom build] 
+[custom build] vite v5.4.19 building for production...
+[custom build] 
+[custom build] transforming...
+[custom build] 
+[custom build] ✓ 1849 modules transformed.
+[custom build] 
+[custom build] rendering chunks...
+[custom build] 
+[custom build] computing gzip size...
+[custom build] 
+[custom build] ../dist/client/index.html                   0.63 kB │ gzip:   0.38 kB
+[custom build] 
+[custom build] ../dist/client/assets/index-B3TxwXv2.css   65.62 kB │ gzip:  11.63 kB
+[custom build] ../dist/client/assets/index-nna_wfsa.js   516.14 kB │ gzip: 154.05 kB
+[custom build] 
+[custom build] 
+[custom build] (!) Some chunks are larger than 500 kB after minification. Consider:
+[custom build] - Using dynamic import() to code-split the application
+[custom build] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[custom build] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[custom build] 
+[custom build] ✓ built in 1.69s
+[custom build] 
+⎔ Starting local server...
+GET /api/screening-requests - Started
+GET /api/screening-requests - Completed in 2ms
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mAPI Error: NeonDbError: relation "screening_requests" does not exist[0m
+
+      at execute (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/@neondatabase/serverless/index.mjs:1556:55)
+      at async NeonHttpPreparedQuery.execute (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/src/neon-http/session.ts:68:18)
+      at async NeonStorage.getAllScreeningRequests (file:///Users/paulbloedorn/Downloads/PassionPortfolio/server/storage.ts:31:12)
+      at async handleApiRequest (file:///Users/paulbloedorn/Downloads/PassionPortfolio/server/routes.ts:23:24)
+      at null.<anonymous> (async file:///Users/paulbloedorn/Downloads/PassionPortfolio/.wrangler/tmp/dev-N0KGO0/index.js:18394:25)
+      at null.<anonymous> (async file:///Users/paulbloedorn/Downloads/PassionPortfolio/.wrangler/tmp/dev-N0KGO0/index.js:18200:14)
+      at async jsonError (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+      at async drainBody (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10) {
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '126',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '1449',
+    routine: 'parserOpenTable',
+    sourceError: undefined
+  }
+
+
+[wrangler:info] GET /api/screening-requests 500 Internal Server Error (666ms)
+POST /api/screening-requests - Started
+POST /api/screening-requests - Completed in 8ms
+[wrangler:info] POST /api/screening-requests 400 Bad Request (53ms)
+POST /api/screening-requests - Started
+POST /api/screening-requests - Completed in 0ms
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mAPI Error: NeonDbError: relation "screening_requests" does not exist[0m
+
+      at execute (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/@neondatabase/serverless/index.mjs:1556:55)
+      at async NeonHttpPreparedQuery.execute (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/src/neon-http/session.ts:68:18)
+      at async NeonStorage.createScreeningRequest (file:///Users/paulbloedorn/Downloads/PassionPortfolio/server/storage.ts:38:20)
+      at async handleApiRequest (file:///Users/paulbloedorn/Downloads/PassionPortfolio/server/routes.ts:35:28)
+      at null.<anonymous> (async file:///Users/paulbloedorn/Downloads/PassionPortfolio/.wrangler/tmp/dev-N0KGO0/index.js:18394:25)
+      at null.<anonymous> (async file:///Users/paulbloedorn/Downloads/PassionPortfolio/.wrangler/tmp/dev-N0KGO0/index.js:18200:14)
+      at async jsonError (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts:22:10)
+      at async drainBody (file:///Users/paulbloedorn/Downloads/PassionPortfolio/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts:5:10) {
+    severity: 'ERROR',
+    code: '42P01',
+    detail: undefined,
+    hint: undefined,
+    position: '13',
+    internalPosition: undefined,
+    internalQuery: undefined,
+    where: undefined,
+    schema: undefined,
+    table: undefined,
+    column: undefined,
+    dataType: undefined,
+    constraint: undefined,
+    file: 'parse_relation.c',
+    line: '1449',
+    routine: 'parserOpenTable',
+    sourceError: undefined
+  }
+
+
+[wrangler:info] POST /api/screening-requests 500 Internal Server Error (194ms)
+POST /api/screening-requests - Started
+POST /api/screening-requests - Completed in 4ms
+[wrangler:info] POST /api/screening-requests 201 Created (261ms)
+GET /api/screening-requests - Started
+GET /api/screening-requests - Completed in 0ms
+[wrangler:info] GET /api/screening-requests 200 OK (148ms)
+GET /api/screening-requests/1 - Started
+GET /api/screening-requests/1 - Completed in 0ms
+[wrangler:info] GET /api/screening-requests/1 200 OK (139ms)
+GET /api/screening-requests/999 - Started
+GET /api/screening-requests/999 - Completed in 0ms
+[wrangler:info] GET /api/screening-requests/999 404 Not Found (199ms)
+🪵  Logs were written to "/Users/paulbloedorn/Library/Preferences/.wrangler/logs/wrangler-2025-07-18_06-40-06_125.log"

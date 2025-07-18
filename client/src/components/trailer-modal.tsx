@@ -11,13 +11,35 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 interface TrailerModalProps {
   children: React.ReactNode;
+  videoUrl?: string;
 }
 
-export default function TrailerModal({ children }: TrailerModalProps) {
+export default function TrailerModal({ children, videoUrl }: TrailerModalProps) {
   const [isOpen, setIsOpen] = useState(false);
   
-  // Convert YouTube URL to embeddable format
-  const trailerUrl = "https://www.youtube.com/embed/Tl0rWrFLGeI?autoplay=1&rel=0&modestbranding=1";
+  // Convert YouTube URL to embeddable format or use default
+  const getEmbedUrl = (url?: string) => {
+    if (!url) {
+      return "https://www.youtube.com/embed/Tl0rWrFLGeI?autoplay=1&rel=0&modestbranding=1";
+    }
+    
+    // Handle various YouTube URL formats
+    if (url.includes('youtube.com/watch?v=')) {
+      const videoId = url.split('v=')[1]?.split('&')[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    } else if (url.includes('youtu.be/')) {
+      const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    } else if (url.includes('youtube.com/embed/')) {
+      // Already in embed format, just add autoplay params
+      return url.includes('?') ? `${url}&autoplay=1&rel=0&modestbranding=1` : `${url}?autoplay=1&rel=0&modestbranding=1`;
+    }
+    
+    // Return as-is if it's not a YouTube URL
+    return url;
+  };
+  
+  const trailerUrl = getEmbedUrl(videoUrl);
 
   const handleClose = () => {
     setIsOpen(false);

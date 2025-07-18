@@ -1,0 +1,229 @@
+{
+  "hero": {
+    "headline": "We all take childbirth for granted...",
+    "subtitle": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "On March 22, 2020, Annie and Tony checked into the hospital for what should have been a routine delivery of their baby boy. What followed was 24 days that would change their lives forever."
+            }
+          ]
+        }
+      ]
+    },
+    "posterImage": "/assets/poster_24_days_1752421477308.png",
+    "trailerButton": {
+      "text": "Watch Trailer",
+      "videoUrl": ""
+    }
+  },
+  "screeningsCta": {
+    "headline": "Screenings and Speaking Engagements",
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "As a case study supporting both AFE and mental-trauma awareness, screening and discussing 24 Days can help foster a culture where trauma-informed care is not just a policy, but a lived practice."
+            }
+          ]
+        }
+      ]
+    },
+    "buttonText": "Schedule a Consult"
+  },
+  "testimonials": {
+    "headline": "What People Are Saying",
+    "items": [
+      {
+        "category": "Conference",
+        "icon": "Calendar",
+        "quote": {
+          "type": "root",
+          "children": [
+            {
+              "type": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Raw, powerful, and deeply moving. This film doesn't just tell a story—it invites you to feel every moment and leaves you thinking long after the credits roll."
+                }
+              ]
+            }
+          ]
+        },
+        "author": "Denise Amundson",
+        "title": "RN Labor and Delivery"
+      },
+      {
+        "category": "Hospital",
+        "icon": "Stethoscope",
+        "quote": {
+          "type": "root",
+          "children": [
+            {
+              "type": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "I'm a better nurse for having the opportunity to see their story. This film should be essential viewing for all healthcare professionals."
+                }
+              ]
+            }
+          ]
+        },
+        "author": "Julie O'Hara",
+        "title": "RN, Neonatology"
+      },
+      {
+        "category": "Education",
+        "icon": "GraduationCap",
+        "quote": {
+          "type": "root",
+          "children": [
+            {
+              "type": "p",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "This film should be essential viewing for all healthcare professionals who are involved in obstetric care."
+                }
+              ]
+            }
+          ]
+        },
+        "author": "Catherine Hermann",
+        "title": "MD"
+      }
+    ]
+  },
+  "audienceCards": {
+    "headline": "Award-winning maternal-health documentary with turnkey education packages",
+    "subtitle": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Inspire trauma-informed care and improve birth experiences across your organisation"
+            }
+          ]
+        }
+      ]
+    },
+    "cards": [
+      {
+        "title": "Conference Planners: Boost CME Engagement",
+        "icon": "Calendar",
+        "features": [
+          {
+            "text": "Earn CME credits with patient-story session meeting ACCME standards"
+          },
+          {
+            "text": "Proven 30-minute post-film panel keeps audiences engaged"
+          },
+          {
+            "text": "Turnkey licensing, A/V specs, and marketing assets ready"
+          }
+        ],
+        "buttonText": "Schedule a Consult",
+        "defaultRole": "conference"
+      },
+      {
+        "title": "Hospital Nurse Educators: Trauma-Informed Care",
+        "icon": "Stethoscope",
+        "features": [
+          {
+            "text": "Module aligned to AACN & AWHONN competencies"
+          },
+          {
+            "text": "Includes reflection worksheets and competency checklists"
+          },
+          {
+            "text": "Flexible: grand-rounds, unit in-service, or micro-learning clips"
+          }
+        ],
+        "buttonText": "Schedule a Consult",
+        "defaultRole": "hospital"
+      },
+      {
+        "title": "Medical School Professors: Case-Based Learning",
+        "icon": "GraduationCap",
+        "features": [
+          {
+            "text": "Discussion guide mapped to AAMC Entrustable Professional Activities"
+          },
+          {
+            "text": "Supports OB-GYN, psychiatry, ethics, and health-systems courses"
+          },
+          {
+            "text": "Assessment bank (MCQs & prompts) in LMS-ready format"
+          }
+        ],
+        "buttonText": "Schedule a Consult",
+        "defaultRole": "education"
+      }
+    ]
+  },
+  "impactMetrics": {
+    "metrics": [
+      {
+        "value": "6,500+",
+        "label": "clinicians trained",
+        "icon": "Users"
+      },
+      {
+        "value": "97%",
+        "label": "said session will change practice",
+        "icon": "Star"
+      }
+    ]
+  },
+  "howItWorks": {
+    "headline": "How It Works",
+    "steps": [
+      {
+        "number": 1,
+        "title": "View",
+        "description": "Watch the 56-minute documentary with your audience"
+      },
+      {
+        "number": 2,
+        "title": "Discuss",
+        "description": "Use our discussion guides and facilitation materials"
+      },
+      {
+        "number": 3,
+        "title": "Implement",
+        "description": "Apply trauma-informed care principles in your practice"
+      }
+    ]
+  },
+  "finalCta": {
+    "headline": "Ready to Transform Your Practice?",
+    "description": {
+      "type": "root",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "type": "text",
+              "text": "Schedule a consultation to discuss how 24 Days Without You can enhance your educational programs and improve patient care."
+            }
+          ]
+        }
+      ]
+    },
+    "buttonText": "Schedule a Consult"
+  }
+}

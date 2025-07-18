@@ -1,0 +1,99 @@
+name = "film-screening-app"
+main = "./dist/server/index.js"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Production assets configuration
+[assets]
+directory = "./dist/client"
+binding = "ASSETS"
+# Enable SPA routing for client-side navigation
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+[vars]
+NODE_ENV = "production"
+
+# Build configuration for production deployment
+[build]
+command = "npm run build:production"
+watch_dir = ["server", "client/src", "tina", "content", "shared"]
+
+# Observability configuration
+[observability]
+enabled = true
+
+# Limits configuration
+[limits]
+cpu_ms = 50
+
+# Development environment configuration
+[env.development]
+name = "film-screening-app-dev"
+[env.development.vars]
+NODE_ENV = "development"
+DATABASE_URL = "postgresql://neondb_owner:npg_V89iAUBcKvDP@ep-old-firefly-aejnoks9-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+
+[env.development.assets]
+directory = "./client"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+# Staging environment
+[env.staging]
+name = "film-screening-app-staging"
+[env.staging.vars]
+NODE_ENV = "staging"
+
+[env.staging.assets]
+directory = "./dist/client"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+[env.staging.observability]
+enabled = true
+
+[env.staging.limits]
+cpu_ms = 50
+
+# Production environment
+[env.production]
+name = "film-screening-app-prod"
+[env.production.vars]
+NODE_ENV = "production"
+
+[env.production.assets]
+directory = "./dist/client"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "single-page-application"
+
+[env.production.observability]
+enabled = true
+
+[env.production.limits]
+cpu_ms = 100
+
+# Secrets configuration (set via wrangler secret put)
+# Required secrets for staging and production:
+# - DATABASE_URL: Neon PostgreSQL connection string
+# - TINA_TOKEN: TinaCMS authentication token
+# - NEXT_PUBLIC_TINA_CLIENT_ID: TinaCMS client ID for frontend
+# - GA_MEASUREMENT_ID: Google Analytics measurement ID (optional)
+# - DASHBOARD_JWT_SECRET: JWT secret for dashboard authentication
+
+# Example commands to set secrets:
+# Staging:
+# wrangler secret put DATABASE_URL --env staging
+# wrangler secret put TINA_TOKEN --env staging
+# wrangler secret put NEXT_PUBLIC_TINA_CLIENT_ID --env staging
+# wrangler secret put DASHBOARD_JWT_SECRET --env staging
+
+# Production:
+# wrangler secret put DATABASE_URL --env production
+# wrangler secret put TINA_TOKEN --env production
+# wrangler secret put NEXT_PUBLIC_TINA_CLIENT_ID --env production
+# wrangler secret put GA_MEASUREMENT_ID --env production
+# wrangler secret put DASHBOARD_JWT_SECRET --env production
